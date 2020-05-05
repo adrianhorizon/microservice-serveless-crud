@@ -1,0 +1,23 @@
+{
+  "name": "lms-services-stylus",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "adrian caminos <camilod4568@gmail.com>",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint **/*.js --fix",
+    "lint:test": "node_modules/.bin/eslint"
+  },
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "^2.418.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "^4.3.1",
+    "eslint": "^5.15.3",
+    "jest": "^24.5.0",
+    "serverless-dynamodb-local": "^0.2.36",
+    "serverless-offline": "^4.9.1"
+  }
+}
