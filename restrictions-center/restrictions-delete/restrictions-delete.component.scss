@@ -1,0 +1,67 @@
+@import "~styles/mixin.scss", "~styles/colors.scss";
+
+input {
+    @include input-angular-material;
+}
+
+mat-dialog-content {
+    border-top: 2px solid $grey-rappi;
+    border-bottom: 2px solid $grey-rappi;
+}
+
+.container-button-upload {
+    margin: 25px 20px;
+}
+
+.accept-button {
+    @include button-rappi($blue-rappi);
+}
+
+.close-button {
+    @include button-rappi(white);
+    width: 140px;
+    margin: 5px !important;
+    color: $grey-font-rappi !important;
+}
+
+.container-select {
+    margin-top: 30px;
+    float: left;
+}
+
+.file-info {
+    border: 2px dashed $grey-font-rappi;
+    padding: 5px 30px;
+    color: $grey-font-rappi;
+    float: left;
+    margin: 20px 10px;
+}
+
+.file-upload-button {
+    float: left;
+    margin-top: 20px;
+
+    input[type=file] {
+        cursor: pointer;
+        width: 180px;
+        height: 34px !important;
+        overflow: hidden;
+
+        &:before {
+            width: 180px;
+            height: 34px;
+            font-size: 16px;
+            line-height: 32px;
+            content: attr(data-th)"";
+            display: inline-block;
+            background: white;
+            border: 2px dashed $grey-font-rappi;
+            padding: 0 10px;
+            text-align: center;
+        }
+
+        &::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+    }
+}

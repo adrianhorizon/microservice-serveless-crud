@@ -1,0 +1,57 @@
+@import "~styles/mixin.scss", "~styles/colors.scss";
+
+input {
+    @include input-angular-material;
+}
+
+.container-rewards-resctrictions {
+    background-color: white;
+}
+
+.title-container {
+    border-bottom: 1px solid $grey-rappi;
+    font-size: 17px;
+
+    .title {
+        margin: 10px;
+        font-weight: bold;
+    }
+}
+
+.material-icons {
+    opacity: 0.8;
+}
+
+.container-icon {
+    margin: 5px;
+}
+
+.container-rewards {
+    padding: 10px 20px;
+
+    button {
+        margin-top: 10px;
+
+        mat-icon {
+            margin: 0px 5px 4px;
+        }
+    }
+}
+
+.accept-button {
+    @include button-rappi($blue-rappi);
+    height: 35px;
+    width: 140px;
+}
+.container-table {
+    @include table-responsive-column;
+}
+
+.container-table {
+    @include table-responsive-min-width;
+}
+
+:host ::ng-deep {
+    @include form-field-outline;
+    @include mat-table;
+}

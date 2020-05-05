@@ -1,0 +1,42 @@
+@import "~styles/mixin.scss", "~styles/colors.scss";
+
+input {
+    @include input-angular-material;
+}
+
+mat-dialog-content {
+    border-top: 2px solid $grey-rappi;
+    border-bottom: 2px solid $grey-rappi;
+}
+
+mat-label {
+    font-size: 17px;
+}
+
+.container-select {
+    margin-top: 24px;
+}
+
+.accept-button {
+    @include button-rappi($blue-rappi);
+    width: 140px;
+}
+
+.close-button {
+    @include button-rappi(white);
+    width: 140px;
+    margin: 5px !important;
+    color: $grey-font-rappi !important;
+}
+
+.container-label {
+    margin-bottom: 24px;
+}
+
+.file-upload {
+    display: none;
+}
+
+:host ::ng-deep {
+    @include form-field-outline;
+}

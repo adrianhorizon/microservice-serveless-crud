@@ -1,0 +1,18 @@
+<h3 mat-dialog-title>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.SUMMARY' | translate }}</h3>
+<mat-dialog-content>
+    <div class="container-detail">
+        <div class="item" *ngFor="let item of items">
+            <p>{{ item?.value }}</p>
+            <span>{{ item?.title | translate }}</span>
+            <ul>
+                <li *ngFor="let subItem of item?.key">
+                    {{ subItem?.subTitle }} - {{ subItem?.value }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button class="btn-flat cancel-button" [mat-dialog-close]="true" tabindex="-1"
+        cdkFocusInitial>{{ 'BUTTON.CANCEL' | translate }}</button>
+</mat-dialog-actions>

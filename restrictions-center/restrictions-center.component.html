@@ -1,0 +1,37 @@
+<div fxLayout="column">
+    <lupe-actions-bar [mode]="'left'">
+        <button mat-flat-button (click)="selectTab(TABS.RESTRICTIONS_CENTER)"
+            [ngClass]="{ 'current-right': currentTab === TABS.RESTRICTIONS_CENTER.KEY }">
+            <mat-icon class="action-icon" [ngClass]="{ 'not-current': currentTab === TABS.RESTRICTIONS_CENTER.KEY }">
+                gavel
+            </mat-icon>
+            <span class="tooltiptextLeft">{{ TABS.RESTRICTIONS_CENTER.TITLE | translate }}</span>
+        </button>
+        <button mat-flat-button (click)="selectTab(TABS.RESTRICTIONS_CONCEPT)"
+            [ngClass]="{ 'current-right': currentTab === TABS.RESTRICTIONS_CONCEPT.KEY }">
+            <mat-icon class="action-icon" [ngClass]="{ 'not-current': currentTab === TABS.RESTRICTIONS_CONCEPT.KEY }">
+                supervisor_account
+            </mat-icon>
+            <span class="tooltiptextLeft">{{ TABS.RESTRICTIONS_CONCEPT.TITLE | translate }}</span>
+        </button>
+    </lupe-actions-bar>
+
+    <div class="main-screen">
+        <div fxLayout="row">
+            <app-breadcrumb>
+                <ng-container title>
+                    <span class="gray-title">{{ 'STOREKEEPER' | translate }}</span>
+                </ng-container>
+                <ng-container title>
+                    <span class="active" *ngIf="actualTabName"> > {{ actualTabName | translate }}</span>
+                </ng-container>
+            </app-breadcrumb>
+        </div>
+
+        <sk-restrictions-center-information [id]="TABS.RESTRICTIONS_CENTER.KEY"
+            *ngIf="currentTab === TABS.RESTRICTIONS_CENTER.KEY"></sk-restrictions-center-information>
+
+        <sk-rewards-center-information [id]="TABS.RESTRICTIONS_CONCEPT.KEY"
+            *ngIf="currentTab === TABS.RESTRICTIONS_CONCEPT.KEY"></sk-rewards-center-information>
+    </div>
+</div>

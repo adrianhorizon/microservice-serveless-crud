@@ -1,0 +1,18 @@
+@import "~styles/mixin.scss", "~styles/colors.scss";
+
+.container-modal-status {
+    input {
+        @include input-angular-material;
+    }
+
+    .accept-button {
+        @include button-rappi($blue-rappi);
+    }
+
+    .close-button {
+        @include button-rappi(white);
+        width: 140px;
+        margin: 5px !important;
+        color: $grey-font-rappi !important;
+    }
+}

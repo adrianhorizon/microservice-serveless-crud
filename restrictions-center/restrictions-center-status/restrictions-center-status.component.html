@@ -1,0 +1,15 @@
+<div class="container-modal-status">
+    <h3 mat-dialog-title>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.STATUS' | translate }}</h3>
+    <mat-dialog-content>
+        <p>
+            {{ ('STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.' + (resctrictionDetails?.active ? 'STATUS_TITLE_DEACTIVATED' : 'STATUS_TITLE_ACTIVATED')) | translate }}
+            {{ resctrictionDetails?.id }} ?
+        </p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button class="btn-flat close-button" [mat-dialog-close]="true" tabindex="-1"
+            cdkFocusInitial>{{ 'BUTTON.CANCEL' | translate }}</button>
+        <button class="btn-flat accept-button" [mat-dialog-close]="resctrictionDetails?.id"
+            (click)="editRestriction(resctrictionDetails)">{{ 'BUTTON.SUBMIT' | translate }}</button>
+    </mat-dialog-actions>
+</div>

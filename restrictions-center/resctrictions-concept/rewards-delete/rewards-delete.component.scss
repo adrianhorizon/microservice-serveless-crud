@@ -1,0 +1,13 @@
+@import "~styles/mixin.scss", "~styles/colors.scss";
+
+.accept-button {
+    @include button-rappi($blue-rappi);
+}
+
+.close-button {
+    @include button-rappi(white);
+    margin: 5px !important;
+    color: $grey-font-rappi !important;
+    font-weight: bold;
+    text-transform: capitalize;
+}

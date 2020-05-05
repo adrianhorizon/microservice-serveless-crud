@@ -1,0 +1,12 @@
+<div class="container-modal-delete">
+    <h3 mat-dialog-title>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.DELETE_RESTRICTION' | translate }}</h3>
+    <mat-dialog-content>
+        <p>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.DELETE_RESTRICTION_MESSAGE' | translate: translateParams }}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-flat-button class="close-button" [mat-dialog-close]="true" tabindex="-1"
+            cdkFocusInitial>{{ 'BUTTON.CANCEL' | translate }}</button>
+        <button mat-flat-button class="accept-button"
+            (click)="confirmDelete(deleteRestriction)">{{ 'BUTTON.DELETE' | translate }}</button>
+    </mat-dialog-actions>
+</div>

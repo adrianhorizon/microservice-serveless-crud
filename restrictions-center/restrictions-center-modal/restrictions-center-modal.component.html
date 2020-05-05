@@ -1,0 +1,102 @@
+<h3 mat-dialog-title>
+    {{ ('STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.' + (restrictionUser?.data ? 'EDIT' : 'CREATE')) | translate }}
+</h3>
+<mat-dialog-content [formGroup]="restrictionForm" class="mat-typography" novalidate>
+    <div class="container-resctriction">
+        <mat-label>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.NAME' | translate }}</mat-label>
+        <mat-form-field appearance="outline">
+            <input matInput type="text" [ngModel]="restrictionUser?.edit?.name" formControlName="name"
+                [placeholder]="'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.NAME' | translate" required>
+            <mat-error class="error-message" *ngIf="true">{{ errorMessage }}
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="container-resctriction">
+        <mat-label>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.DESCRIPTION' | translate }}</mat-label>
+        <mat-form-field appearance="outline">
+            <input matInput type="text" [ngModel]="restrictionUser?.edit?.description" formControlName="description"
+                [placeholder]="'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.DESCRIPTION' | translate" required>
+            <mat-error class="error-message" *ngIf="true">{{ errorMessage }}
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="container-resctriction">
+        <mat-label>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.SELECT' | translate }}</mat-label>
+        <div class="container-week-days">
+            <button mat-flat-button *ngFor="let item of weekDays; let index = index;"
+                (click)="enableDisableRule(index, item?.status)"
+                [ngClass]="{ 'color-disabled' : item?.status, 'color-enabled': !item?.status }">
+                {{ ('STOREKEEPER-CRM.RESTRICTIONS_CENTER.DAYS.' +  item?.text) | translate }}
+            </button>
+        </div>
+    </div>
+
+    <div formArrayName="restriction_schedules">
+        <div *ngFor="let day of restrictionForm['controls']?.restriction_schedules['controls']; let item = index;">
+            <div class="container-hour" [formGroupName]="item">
+
+                <div class="container-day-text">
+                    <input type="text" formControlName="day" disabled>
+                </div>
+
+                <div formArrayName="weeks_days">
+                    <div *ngFor="let week of day['controls']?.weeks_days['controls']; let index = index; let first = first; let last = last;"
+                        [formGroupName]="index" class="container-flex">
+
+                        <div class="container-days">
+                            <div class="container-label">
+                                <mat-label>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.SINCE' | translate }}
+                                </mat-label>
+                            </div>
+                        </div>
+
+                        <div class="container-days">
+                            <mat-form-field appearance="outline">
+                                <input matInput name="startsAtTimew1" formControlName="start_hour"
+                                    [placeholder]="datePlaceholder" placeholder="00:00" aria-label="24hr format"
+                                    [ngxTimepicker]="fullTime1" [format]="24" readonly>
+                                <ngx-material-timepicker #fullTime1 [minutesGap]="30"></ngx-material-timepicker>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="container-days">
+                            <div class="container-label">
+                                <mat-label>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.UNTIL' | translate }}
+                                </mat-label>
+                            </div>
+                        </div>
+
+                        <div class="container-days">
+                            <mat-form-field appearance="outline">
+                                <input matInput name="startsAtTime2" formControlName="end_hour"
+                                    [placeholder]="datePlaceholder" placeholder="00:00" aria-label="24hr format"
+                                    [ngxTimepicker]="fullTime2" [format]="24" readonly>
+                                <ngx-material-timepicker #fullTime2 [minutesGap]="30"></ngx-material-timepicker>
+                            </mat-form-field>
+                        </div>
+
+                        <button mat-mini-fab class="remove-button" *ngIf="index > 0 && last" (click)="removeItem(item)">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+
+                        <button mat-mini-fab class="add-button" *ngIf="last" (click)="addCreds(item, day)">
+                            <mat-icon>add</mat-icon>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-flat-button class="close-button" [mat-dialog-close]="true"
+        cdkFocusInitial>{{ 'BUTTON.CANCEL' | translate }}</button>
+    <button mat-flat-button class="accept-button" [disabled]="!restrictionForm?.valid"
+        (click)="onSubmit(restrictionForm)">
+        {{ ('BUTTON.' + (restrictionUser?.data ? 'EDIT' : 'CREATE')) | translate }}
+    </button>
+</mat-dialog-actions>

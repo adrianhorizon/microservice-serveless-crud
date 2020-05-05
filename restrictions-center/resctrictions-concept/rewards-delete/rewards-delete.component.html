@@ -1,0 +1,9 @@
+<h3 mat-dialog-title> {{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.DELETE' | translate }}</h3>
+<mat-dialog-content>
+    <p>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.DELETE_RESTRICTION_MESSAGE' | translate: translateParams }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button class="btn-flat close-button" [mat-dialog-close] cdkFocusInitial>{{ 'BUTTON.CANCEL' | translate }}</button>
+    <button class="btn-flat accept-button"
+        (click)="deleteReward(rewardDelete)">{{ 'BUTTON.CONFIRM' | translate }}</button>
+</mat-dialog-actions>

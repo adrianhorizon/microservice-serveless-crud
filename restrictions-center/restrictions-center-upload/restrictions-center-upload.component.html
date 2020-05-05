@@ -1,0 +1,60 @@
+<h3 mat-dialog-title>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.UPLOAD' | translate }}</h3>
+<mat-dialog-content class="mat-typography" novalidate>
+    <div class="container-select">
+        <mat-label>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.SELECT_SEGMENT' | translate }}</mat-label>
+        <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="selectFile" (selectionChange)="somethingChanged(selectFile)"
+                [placeholder]="'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.SELECT_SEGMENT' | translate">
+                <mat-option *ngFor="let item of items" [value]="item?.key">
+                    {{ item?.value }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div [ngSwitch]="selectFile">
+        <div *ngSwitchCase="1">
+            <form [formGroup]="resctrictionForm">
+
+                <mat-label>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.DESCRIPTION' | translate }}</mat-label>
+                <mat-form-field class="container-input" appearance="outline">
+                    <input matInput formControlName="request_by" name="request_by"
+                        [placeholder]="'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.DESCRIPTION' | translate" required>
+                    <mat-error class="error-message" *ngIf="!disabled && resctrictionForm?.invalid">{{ errorMessage }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-label>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.TABLE.ID' | translate }}</mat-label>
+                <mat-form-field class="container-input" appearance="outline">
+                    <input matInput formControlName="restriction_id" name="restriction_id"
+                        [placeholder]="'STOREKEEPER-CRM.RESTRICTIONS_CENTER.TABLE.ID' | translate" required>
+                    <mat-error class="error-message" *ngIf="!disabled && resctrictionForm?.invalid">{{ errorMessage }}
+                    </mat-error>
+                </mat-form-field>
+
+                <button class="container-label" mat-stroked-button (click)="fileUpload.click()">
+                    {{ chooseLabel }}
+                </button>
+
+                <input formControlName="file" #fileUpload type="file" class="file-upload"
+                    (change)="onFileSelected($event)" [(ngModel)]="inputFileName" accept=".csv" required>
+
+                <div *ngFor="let newFile of files">
+                    <span>{{ newFile?.name }}</span>
+                    <button mat-icon-button [attr.title]="deleteButtonLabel?deleteButtonLabel:null"
+                        (click)="removeFile(newFile)">
+                        <mat-icon>{{ deleteButtonIcon }}</mat-icon>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+        <div *ngSwitchDefault></div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-flat-button class="close-button" [mat-dialog-close]="true" tabindex="-1"
+        cdkFocusInitial>{{ 'BUTTON.CANCEL' | translate }}</button>
+    <button mat-flat-button class="accept-button" [disabled]="!resctrictionForm?.valid"
+        (click)="uploadRestriction()">{{ 'BUTTON.CREATE' | translate }}</button>
+</mat-dialog-actions>

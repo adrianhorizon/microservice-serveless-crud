@@ -1,0 +1,19 @@
+<h3 mat-dialog-title> {{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.DELETE' | translate }}</h3>
+<mat-dialog-content>
+    <div class="container-button-upload">
+        <div>
+            <span class="file-info">{{ fileInfo }}</span>
+        </div>
+
+        <div class="file-upload-button">
+            <input type="file" [attr.data-th]="'BUTTON.UPLOAD_CSV' | translate" #fileInput
+                (change)="onFileSelect(fileInput)" required />
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button class="btn-flat close-button" [mat-dialog-close]="true" tabindex="-1"
+        cdkFocusInitial>{{ 'BUTTON.CANCEL' | translate }}</button>
+    <button class="btn-flat accept-button" [disabled]="uploadCsv"
+        (click)="deleteRestriction()">{{ 'BUTTON.CONFIRM' | translate }}</button>
+</mat-dialog-actions>

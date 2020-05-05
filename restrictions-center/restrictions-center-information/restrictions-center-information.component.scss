@@ -1,0 +1,114 @@
+@import "~styles/mixin.scss", "~styles/colors.scss";
+
+input {
+    @include input-angular-material;
+}
+
+.accept-button {
+    @include button-rappi($blue-rappi);
+    height: 35px;
+    width: 140px;
+}
+
+.segment-button {
+    @include button-rappi($purple-rappi);
+    height: 35px;
+    width: 140px;
+}
+
+.delete-button {
+    @include button-rappi($red-rappi);
+    height: 35px;
+    width: 140px;
+}
+
+.container-filter {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-icon {
+    margin: 5px;
+}
+
+.container-title {
+    cursor: pointer;
+    font-weight: bold;
+    color: $blue-rappi;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-icon {
+    margin: 5px;
+}
+
+.container-not-found {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+.column-filter {
+    flex: 1 1 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.column-filter-button {
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.filter-container {
+    margin-top: 20px;
+
+    button {
+        margin-top: 15px;
+
+        mat-icon {
+            margin: 0px 5px 4px;
+        }
+    }
+}
+
+.stroke-button {
+    @include button-stroke(stroke-bg, stroke);
+}
+
+.danger-button {
+    @include button-stroke(danger-bg, danger)
+}
+
+.container-table {
+    @include table-responsive-column;
+}
+
+.container-table {
+    @include table-responsive-min-width;
+}
+
+:host ::ng-deep {
+    @include form-field-outline;
+    @include mat-table;
+    @include slide-toogle;
+}
+
+.material-icons {
+    opacity: 0.8;
+}
+
+.title-container {
+    border-bottom: 1px solid $grey-rappi;
+    font-size: 17px;
+
+    .title {
+        height: 50px;
+        font-weight: bold;
+    }
+}

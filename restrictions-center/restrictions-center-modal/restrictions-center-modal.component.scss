@@ -1,0 +1,128 @@
+@import "~styles/mixin.scss", "~styles/colors.scss", "~styles/variables.scss";
+
+input {
+    @include input-angular-material;
+}
+
+mat-dialog-content {
+    border-top: 2px solid $grey-rappi;
+    border-bottom: 2px solid $grey-rappi;
+}
+
+mat-label {
+    font-size: 17px;
+}
+
+.container-resctriction {
+    margin-top: 24px;
+}
+
+.container-week-days {
+    text-align: center;
+    margin: 20px 0px 20px;
+
+    button {
+        margin: 10px 15px;
+        width: 100px;
+        font-weight: normal;
+        color: $grey-font-rappi;
+    }
+}
+
+.container-hour {
+    margin-top: 24px;
+    border: 2px solid $grey-rappi;
+}
+
+.container-label {
+    margin-top: 15px;
+}
+
+.container-flex {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 0px 20px;
+}
+
+.container-days {
+    flex: 1 1 auto;
+    padding: 0px 10px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:nth-child(odd) {
+        width: 20px;
+    }
+}
+
+.container-day-text {
+    border-bottom: 2px solid $grey-rappi;
+    margin-bottom: 24px;
+    padding: 15px;
+    height: 50px;
+}
+
+@include breakpoint(max-width, large) {
+    .container-flex .container-days {
+        margin-bottom: 5px;
+        flex-basis: 40%;
+
+        &:nth-last-child(2) {
+            margin-right: 0;
+        }
+
+        &:last-child {
+            flex-basis: 100%;
+            margin: 0;
+        }
+    }
+}
+
+@include breakpoint(max-width, medium) {
+    .container-flex .container-days {
+        flex-basis: 100%;
+        margin: 0 0 5px 0;
+    }
+}
+
+.accept-button {
+    @include button-rappi($blue-rappi);
+    width: 120px;
+}
+
+.add-button {
+    background-color: $blue-rappi;
+}
+
+.remove-button {
+    background-color: $red-rappi;
+    margin: 0px 10px !important;
+}
+
+.close-button {
+    @include button-rappi(white);
+    width: 120px;
+    margin: 5px !important;
+    color: $grey-font-rappi !important;
+    font-weight: bold;
+}
+
+.color-disabled {
+    background-color: $default-rappi-bg;
+}
+
+.color-enabled {
+    background-color: $blue-rappi;
+    color: white !important;
+}
+
+:host ::ng-deep {
+    @include form-field-outline;
+}

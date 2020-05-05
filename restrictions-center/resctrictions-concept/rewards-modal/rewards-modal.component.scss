@@ -1,0 +1,21 @@
+@import "~styles/mixin.scss", "~styles/colors.scss", "~styles/variables.scss";
+
+input {
+    @include input-angular-material;
+}
+
+.accept-button {
+    @include button-rappi($blue-rappi);
+}
+
+.close-button {
+    @include button-rappi(white);
+    margin: 5px !important;
+    color: $grey-font-rappi !important;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+:host ::ng-deep {
+    @include form-field-outline;
+}

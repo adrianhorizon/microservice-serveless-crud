@@ -1,0 +1,18 @@
+<h3 mat-dialog-title>
+    {{ ('STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.' + (rewardData ? 'EDIT' : 'CREATE')) | translate }}
+</h3>
+<mat-dialog-content [formGroup]="rewardForm" class="mat-typography" novalidate>
+    <mat-form-field [hintLabel]="'LEADS_COPYS.CONFIRM.MAXIMUN_CHARACTERS' | translate" appearance="outline">
+        <mat-label>{{ 'STOREKEEPER-CRM.RESTRICTIONS_CENTER.MODAL.DESCRIPTION' | translate }}</mat-label>
+        <textarea matInput #messageComment maxlength="180" formControlName="description"></textarea>
+        <mat-hint align="end">{{ messageComment?.value?.length || 0 }}/180</mat-hint>
+        <mat-error class="error-message" *ngIf="rewardForm?.invalid">{{ errorMessage }}
+        </mat-error>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-flat-button class="close-button" [mat-dialog-close]
+        cdkFocusInitial>{{ 'BUTTON.CANCEL' | translate }}</button>
+    <button mat-flat-button class="accept-button" [disabled]="rewardForm?.invalid"
+        (click)="onSubmit(rewardDelete)">{{ 'BUTTON.CONFIRM' | translate }}</button>
+</mat-dialog-actions>

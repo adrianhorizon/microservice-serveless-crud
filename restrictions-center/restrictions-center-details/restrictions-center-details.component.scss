@@ -1,0 +1,51 @@
+@import "~styles/mixin.scss", "~styles/colors.scss", "~styles/variables.scss";
+
+mat-dialog-content {
+    border-top: 2px solid $grey-rappi;
+}
+
+.container-detail {
+    column-count: 1;
+    column-gap: 0;
+    counter-reset: item-counter;
+
+    @include breakpoint(min-width, small) {
+        column-count: 2;
+    }
+
+    @include breakpoint(min-width, medium) {
+        column-count: 3;
+    }
+}
+
+li {
+    background-color: $default-rappi-bg;
+    margin: 5px;
+    color: black;
+    font-size: 15px;
+}
+
+.item {
+    box-sizing: border-box;
+    break-inside: avoid;
+    padding: 10px;
+    counter-increment: item-counter;
+    border-right: 2px solid $grey-rappi;
+    border-bottom: 2px solid $grey-rappi;
+
+    p {
+        font-size: 20px;
+        font-weight: bold;
+    } 
+}
+
+.accept-button {
+    @include button-rappi($blue-rappi);
+}
+
+.cancel-button {
+    @include button-rappi(white);
+    margin: 5px !important;
+    color: $grey-font-rappi !important;
+    font-weight: bold;
+}
