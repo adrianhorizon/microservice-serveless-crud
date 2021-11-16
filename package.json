@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "aws-sdk": "^2.418.0",
+    "aws-sdk": "^2.814.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
